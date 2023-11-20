@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/not-found', function () {
+    return view('errors.404');
+});
+
+Route::middleware('tenancy.domain')->get('/', function () {
+    try {
+        $tenant = \Tenancy\Identification\Resolver::tenantFromRequest();
+    } catch (\Tenancy\Identification\Exceptions\TenantCouldNotBeIdentified $e) {
+        return redirect()->route('not-found');
+    }
+});
+
