@@ -3,12 +3,12 @@
       @csrf
         <div class="mb-5">
           <label for="domain" class="block mb-2 text-sm font-medium text-red-900 dark:text-black">Dominio</label>
-          <input type="text" id="domain" name="domain" class="bg-red-50 border border-red-300 text-red-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-red-700 dark:border-red-600 dark:placeholder-red-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required>
+          <input type="text" id="domain" name="domain" class="bg-red-50 border border-red-300 text-red-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-red-700 dark:border-red-600 dark:placeholder-red-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex: loja-principal" required>
         </div>
         <div class="mb-5">
           <label for="countries" class="block mb-2 text-sm font-medium text-red-900 dark:text-black">Select an option</label>
           <select id="countries" name="plan" class="bg-red-50 border border-red-300 text-red-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-red-700 dark:border-red-600 dark:placeholder-red-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option selected>Choose a country</option>
+              <option selected>Selecionar Plano</option>
               <option value="free">Free</option>
               <option value="standard">Standard</option>
               <option value="premium">Premium</option>
