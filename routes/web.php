@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomePrincipalController;
+use App\Http\Controllers\AddTenancyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/not-found', function () {
-    return view('errors.404');
-});
+Route::get('/home', [HomePrincipalController::class, 'index'])->name('home');
 
-Route::middleware('tenancy.domain')->get('/', function () {
-    try {
-        $tenant = \Tenancy\Identification\Resolver::tenantFromRequest();
-    } catch (\Tenancy\Identification\Exceptions\TenantCouldNotBeIdentified $e) {
-        return redirect()->route('not-found');
-    }
-});
+Route::get('/add-tenancy', [AddTenancyController::class, 'index'])->name('add-tenancy');
+Route::post('/create_action', [AddTenancyController::class, 'create_action'])->name('create_action');
 
+// Rota de login
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login_action'])->name('user.login_action');
+
+// Rota de logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
