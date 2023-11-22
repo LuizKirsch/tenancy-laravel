@@ -12,15 +12,16 @@ class AddTenancyController extends Controller
     }
     public function create_action(Request $request){
         $domain = $request->input('domain');
-
+        $plan = $request->input('plan');
+      
         $tenant = Tenant::create([
-            'domain' => $domain,
-            'plan' => 'free',
+          'domain' => $domain,
+          'plan' => $plan,
         ]);
-    
+      
         $tenant->domains()->create(['domain' => $domain . '.localhost']);
- 
+      
         return view('admin-tenancy.function.add-tenancy');
-    }
+      }
     
 }
