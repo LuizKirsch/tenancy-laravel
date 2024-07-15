@@ -1,7 +1,7 @@
 <?php
- 
+
 namespace App\Livewire;
- 
+
 use Livewire\Component;
 use App\Models\Counter;
 
@@ -21,14 +21,25 @@ class CounterController extends Component
         }
     }
 
+    protected function rules()
+    {
+        return [
+            'count' => 'required|integer|min:0',
+        ];
+    }
+
     public function increment()
     {
+        $this->validate(); 
+
         $this->count++;
         $this->counter->update(['count' => $this->count]);
     }
 
     public function decrement()
     {
+        $this->validate();
+
         $this->count--;
         $this->counter->update(['count' => $this->count]);
     }
