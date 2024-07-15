@@ -8,4 +8,7 @@
 
     <button wire:click="increment">+</button>
     <button wire:click="decrement">-</button>
+    <div wire:loading> 
+        Saving post...
+    </div>
 </div>
