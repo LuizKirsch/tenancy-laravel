@@ -156,4 +156,19 @@ return [
     */
 
     'pagination_theme' => 'tailwind',
+
+    /*
+    |---------------------------------------------------------------------------
+    | Middleware Group
+    |---------------------------------------------------------------------------
+    |
+    | Define the middleware group that Livewire will use when handling requests.
+    | This should be the same group that your web routes are using.
+    |
+    */
+
+    'middleware_group' => [
+        'web',
+        \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class, // ou qualquer middleware de tenancy que você usa
+    ],
 ];

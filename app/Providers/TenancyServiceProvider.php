@@ -12,6 +12,7 @@ use Stancl\Tenancy\Events;
 use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
+use Livewire\Livewire; // Certifique-se de importar a classe Livewire
 
 class TenancyServiceProvider extends ServiceProvider
 {
@@ -101,8 +102,16 @@ class TenancyServiceProvider extends ServiceProvider
     {
         $this->bootEvents();
         $this->mapRoutes();
-
         $this->makeTenancyMiddlewareHighestPriority();
+
+        // Adicionando configuração Livewire::setUpdateRoute
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/livewire/update', $handle)
+                ->middleware(
+                    'web',
+                    \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class // ou qualquer middleware de tenancy que você usa
+                );
+        });
     }
 
     protected function bootEvents()
